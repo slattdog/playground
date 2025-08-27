@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underdog - The Humble Hero</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Bungee:wght@400&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,11 +14,19 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #87CEEB 0%, #F0E68C 100%);
+            font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #FF0000 0%, #0066FF 25%, #FFD700 50%, #FF0000 75%, #0066FF 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -27,25 +37,42 @@
 
         header {
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
+            background: linear-gradient(135deg, #FFD700 0%, #FF0000 50%, #0066FF 100%);
+            border-radius: 25px;
+            padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 6px solid #FFFFFF;
+            animation: headerPulse 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes headerPulse {
+            0% { transform: scale(1) rotate(-1deg); }
+            100% { transform: scale(1.02) rotate(1deg); }
         }
 
         h1 {
-            font-size: 3.5em;
-            color: #FF6B35;
-            text-shadow: 3px 3px 0px #FFD700;
-            margin-bottom: 10px;
-            transform: rotate(-2deg);
+            font-family: 'Bungee', 'Fredoka One', cursive;
+            font-size: 4.5em;
+            color: #FFFFFF;
+            text-shadow: 4px 4px 0px #FF0000, 8px 8px 0px #0066FF, 12px 12px 0px #FFD700;
+            margin-bottom: 15px;
+            transform: rotate(-3deg);
+            animation: titleWobble 2s ease-in-out infinite alternate;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes titleWobble {
+            0% { transform: rotate(-3deg) skew(-5deg); }
+            100% { transform: rotate(3deg) skew(5deg); }
         }
 
         .subtitle {
-            font-size: 1.5em;
-            color: #4169E1;
+            font-size: 1.8em;
+            color: #FFFFFF;
             font-style: italic;
+            text-shadow: 2px 2px 0px #FF0000, 4px 4px 0px #0066FF;
+            font-weight: bold;
         }
 
         .hero-section {
@@ -56,11 +83,18 @@
         }
 
         .hero-image {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FF0000 50%, #0066FF 100%);
+            border-radius: 25px;
+            padding: 25px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 4px solid #FFFFFF;
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
         }
 
         .hero-image div {
@@ -95,18 +129,31 @@
         }
 
         .hero-info {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFD700 100%);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 4px solid #FF0000;
+            animation: cardBounce 5s ease-in-out infinite;
+        }
+        
+        @keyframes cardBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.02) rotate(1deg); }
+            75% { transform: scale(0.98) rotate(-1deg); }
         }
 
         h2 {
-            color: #FF6B35;
-            font-size: 2em;
-            margin-bottom: 15px;
+            font-family: 'Fredoka One', cursive;
+            color: #FF0000;
+            font-size: 2.5em;
+            margin-bottom: 20px;
             text-decoration: underline;
-            text-decoration-color: #FFD700;
+            text-decoration-color: #0066FF;
+            text-shadow: 3px 3px 0px #FFD700;
+            transform: rotate(-2deg);
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
         .stats {
@@ -117,44 +164,79 @@
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px;
-            border-radius: 15px;
+            background: linear-gradient(45deg, #FF0000 0%, #0066FF 50%, #FFD700 100%);
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
-            border: 3px solid #FFD700;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+            font-weight: bold;
+            animation: cardWiggle 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        @keyframes cardWiggle {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
         }
 
         .stat-card h3 {
-            color: #4169E1;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            color: #FFFFFF;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
         }
 
         .quote-section {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
+            background: linear-gradient(135deg, #0066FF 0%, #FFD700 50%, #FF0000 100%);
+            border-radius: 25px;
+            padding: 40px;
             margin: 30px 0;
             text-align: center;
-            border-left: 10px solid #FF6B35;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 6px solid #FFFFFF;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            animation: quotePulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes quotePulse {
+            0%, 100% { transform: scale(1) skew(0deg); }
+            50% { transform: scale(1.03) skew(-2deg); }
         }
 
         .quote {
-            font-size: 2em;
-            color: #4169E1;
+            font-size: 2.4em;
+            color: #FFFFFF;
             font-style: italic;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px #FF0000, 6px 6px 0px #0066FF;
+            font-weight: bold;
+            animation: textShake 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textShake {
+            0% { transform: translateX(-2px) rotate(-1deg); }
+            100% { transform: translateX(2px) rotate(1deg); }
         }
 
         .powers-section {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
+            background: linear-gradient(45deg, #FFD700 0%, #FFFFFF 50%, #0066FF 100%);
+            border-radius: 25px;
+            padding: 35px;
             margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 4px solid #FF0000;
+            animation: sectionSway 6s ease-in-out infinite;
+        }
+        
+        @keyframes sectionSway {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            33% { transform: translateX(5px) rotate(1deg); }
+            66% { transform: translateX(-5px) rotate(-1deg); }
         }
 
         .powers-list {
@@ -165,22 +247,46 @@
         }
 
         .powers-list li {
-            background: #FFD700;
-            padding: 15px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #FF0000 0%, #FFD700 100%);
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
             font-weight: bold;
-            color: #333;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            color: #FFFFFF;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid #0066FF;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+            animation: powerGlow 3s ease-in-out infinite alternate;
+            transition: transform 0.3s ease;
+        }
+        
+        .powers-list li:hover {
+            transform: scale(1.1) rotate(-5deg);
+            animation-play-state: paused;
+        }
+        
+        @keyframes powerGlow {
+            0% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 0 rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.8); }
         }
 
         footer {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 20px;
+            background: linear-gradient(135deg, #0066FF 0%, #FF0000 50%, #FFD700 100%);
+            border-radius: 25px;
+            padding: 30px;
             text-align: center;
             margin-top: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 4px solid #FFFFFF;
+            color: #FFFFFF;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+            animation: footerBounce 5s ease-in-out infinite;
+        }
+        
+        @keyframes footerBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         .pill-animation {
@@ -223,7 +329,7 @@
 
         <div class="hero-section">
             <div class="hero-image">
-                <div class="pill-animation"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/95/Underdog_%28animated_TV_series%29.jpg" alt="Underdog animated character" style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid #FF6B35; object-fit: cover;">
                 <p><strong>The Humble Super Hero</strong></p>
             </div>
 
